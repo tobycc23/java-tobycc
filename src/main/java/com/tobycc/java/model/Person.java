@@ -18,6 +18,8 @@ public class Person {
         return age;
     }
 
+    public String getEmailAddress() { return emailAddress; }
+
     public void printPerson() {
         System.out.println(this.toString());
     }
