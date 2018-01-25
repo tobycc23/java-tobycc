@@ -3,6 +3,7 @@ package com.tobycc.java.learning;
 import com.tobycc.java.model.Person;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -56,13 +57,18 @@ public class LambdaLearning {
                                          Function<X, Y> mapper,
                                          Consumer<Y> block) {
         for (X p : roster) {
-            if(tester.test(p)) {
+            if (tester.test(p)) {
                 Y data = mapper.apply(p);
                 block.accept(data);
             }
         }
     }
 
+
+    //5.
+    public static void methodReferenceExample(Comparator<Person> comparator, Person a, Person b) {
+        comparator.compare(a, b);
+    }
 
 
     public static void main(String[] args) {
@@ -92,5 +98,20 @@ public class LambdaLearning {
                 p -> p.getEmailAddress(),
                 email -> System.out.println(email));
 
+
+        //5. Comparator has one method to implement making it a functional interface. The method takes two args and
+        //returns an int
+        Person a = new Person();
+        a.setAge(50);
+        Person b = new Person();
+        b.setAge(51);
+        //This lambda expression implements the Comparator functional interface using *an existing method*
+        methodReferenceExample((Person pA, Person pB) -> Person.compareAges(pA,pB), a, b);
+        //As it is using an existing method, can be shortened to the following syntax (The class and method called by
+        //lambda expression). This is a method reference!
+        methodReferenceExample(Person::compareAges, a, b);
+        //Both lines above are analogous to one another
+
+        //Can also us method references with containingObject::instanceMethodName, ContainingType::methodName, ClassName::new
     }
 }

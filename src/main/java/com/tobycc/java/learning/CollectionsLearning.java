@@ -94,6 +94,12 @@ public class CollectionsLearning {
         System.out.println(ts);
     }
 
+    //Create Map with defaults then can put specifics in afterwards that override default values with same keys
+    public static <K,V> Map<K,V> createMapWithDefaults(Map<K,V>defaults, Map<K,V> overrides) {
+        Map<K,V> result = new HashMap<>(defaults);
+        result.putAll(overrides);
+        return result;
+    }
 
 
     public static void main(String[] args) {

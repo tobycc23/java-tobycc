@@ -18,9 +18,15 @@ public class Person {
         return age;
     }
 
+    public void setAge(int age) { this.age = age; }
+
     public String getEmailAddress() { return emailAddress; }
 
     public void printPerson() {
         System.out.println(this.toString());
+    }
+
+    public static int compareAges(Person a, Person b) {
+        return a.getAge()>b.getAge() ? 1 : 0;
     }
 }
