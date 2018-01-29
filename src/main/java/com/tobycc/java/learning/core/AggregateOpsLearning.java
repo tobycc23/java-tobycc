@@ -1,4 +1,4 @@
-package com.tobycc.java.learning;
+package com.tobycc.java.learning.core;
 
 import com.tobycc.java.model.Person;
 import com.tobycc.java.model.enums.Gender;

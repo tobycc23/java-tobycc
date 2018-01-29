@@ -1,4 +1,4 @@
-package com.tobycc.java.learning;
+package com.tobycc.java.learning.core;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -102,10 +102,39 @@ public class CollectionsLearning {
     }
 
 
+    //Synchronization wrappers allow any collection to be transformed into a synchronized one, list example here
+    public static <T> void synchronizeAList(List<T> list) {
+        List<T> newSyncList = Collections.synchronizedList(list);
+        synchronized (newSyncList) {
+            for (T e : newSyncList) System.out.println(e);
+        }
+        //java.util.concurrent provides concurrent implementations of BlockingQueue and ConcurrentMap interfaces
+        //with much higher concurrency than mere synchronized implementations
+    }
+
+    //Immutable lists operations
+    public static void immutableLists() {
+        //Immutable list with n copies of the same element
+        List list = new ArrayList(Collections.nCopies(20, "hello"));
+        System.out.println(list);
+        list.addAll(10, Collections.nCopies(10, "echo"));
+        System.out.println(list);
+
+        //If the number of copies you want is one, use the singleton method e.g. to remove all occurrences
+        //of a specified element from a Collection
+        list.removeAll(Collections.singletonList("hello"));
+        System.out.println(list);
+        //Immutable empty list
+        System.out.println(Collections.emptyList());
+    }
+
+
+
     public static void main(String[] args) {
         usingAsList();
         convertBetweenCollections();
         bulkOperations();
+        immutableLists();
     }
 
 }
