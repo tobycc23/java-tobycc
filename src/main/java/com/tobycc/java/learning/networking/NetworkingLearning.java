@@ -81,9 +81,25 @@ public class NetworkingLearning {
     }
 
 
+    public static void inetAddresses() {
+        try {
+            //InetAddress.getByName(null) or .getLoopbackAddress() points to loopback address / 127.0.0.1 / localhost
+            System.out.println(InetAddress.getByName(null));
+            System.out.println(InetAddress.getLoopbackAddress().toString());
+
+            //InetAddress.getLocalhost() points to machine name that localhost running on
+            System.out.println(InetAddress.getLocalHost().toString());
+
+        } catch (UnknownHostException e) {
+            e.getStackTrace();
+        }
+    }
+
+
     public static void main(String[] args) {
         try {
-            urlWriter();
+            //urlWriter();
+            inetAddresses();
         } catch(Exception e) {
             e.printStackTrace();
         }
