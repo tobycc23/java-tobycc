@@ -11,6 +11,8 @@ public class SocketServer {
             System.exit(1);
         }*/
 
+        System.out.println("Server initialising...");
+
         int portNumber;
         if(args.length == 1) {
             portNumber = Integer.parseInt(args[0]);
@@ -18,16 +20,17 @@ public class SocketServer {
             portNumber = 26001;
         }
 
-        //The server socket code is as below, situated here in try-with-resources for ease
+        //The server socket code is as below, situated here in try-with-resources for ease (closes automatically as well!)
         try (ServerSocket serverSocket = new ServerSocket(portNumber);
              Socket clientSocket = serverSocket.accept();
 
              PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
         {
+            System.out.println("Server ready...");
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                out.println(inputLine);
+                out.println(inputLine + " echo back!");
             }
         } catch (IOException e) {
             System.out.println("Exception caught when trying to listen on port "

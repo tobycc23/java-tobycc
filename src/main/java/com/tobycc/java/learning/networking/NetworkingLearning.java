@@ -87,7 +87,7 @@ public class NetworkingLearning {
             System.out.println(InetAddress.getByName(null));
             System.out.println(InetAddress.getLoopbackAddress().toString());
 
-            //InetAddress.getLocalhost() points to machine name that localhost running on
+            //InetAddress.getLocalhost() points to machine name that localhost is running on
             System.out.println(InetAddress.getLocalHost().toString());
 
         } catch (UnknownHostException e) {

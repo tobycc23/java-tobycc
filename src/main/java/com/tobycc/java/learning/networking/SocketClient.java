@@ -5,12 +5,14 @@ import java.net.*;
 
 public class SocketClient {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         /*if (args.length != 2) {
             System.err.println(
                     "Usage: java SocketClient <host name> <port number>");
             System.exit(1);
         }*/
+        System.out.println("Client initialising, wait 5 seconds for server startup...");
+        Thread.sleep(5000);
 
         InetAddress hostName;
         int portNumber;
@@ -23,13 +25,14 @@ public class SocketClient {
         }
 
 
-        //The client socket code is below, situated here in try-with-resources for ease
+        //The client socket code is below, situated here in try-with-resources for ease (closes automatically as well!)
         try (Socket socketSocket = new Socket(hostName, portNumber);
 
              PrintWriter out = new PrintWriter(socketSocket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socketSocket.getInputStream()));
              BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in)))
         {
+            System.out.println("Client established connection...");
             String userInput;
             while ((userInput = stdIn.readLine()) != null) {
                 out.println(userInput);
