@@ -1,4 +1,4 @@
-package com.tobycc.java.learning.core;
+package com.tobycc.java.learning.java8;
 
 import com.tobycc.java.model.Person;
 

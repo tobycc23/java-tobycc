@@ -1,4 +1,4 @@
-package com.tobycc.java.learning.core;
+package com.tobycc.java.learning.datetime;
 
 import java.time.LocalDate;
 import java.time.Month;

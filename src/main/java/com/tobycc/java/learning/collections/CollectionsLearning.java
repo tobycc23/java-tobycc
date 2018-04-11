@@ -1,4 +1,4 @@
-package com.tobycc.java.learning.core;
+package com.tobycc.java.learning.collections;
 
 import java.util.*;
 import java.util.stream.Collectors;
