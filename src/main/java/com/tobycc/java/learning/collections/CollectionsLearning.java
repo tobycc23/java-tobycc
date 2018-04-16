@@ -24,7 +24,7 @@ public class CollectionsLearning {
         Set set2 = Arrays.asList("one","two","two","three").stream().collect(Collectors.toSet());
         System.out.println(set2);
 
-        //or can simply use for loop or someCollection.Iterator and then the add() method (duplicates not added obviously)
+        //or can simply use for loop or someCollection.iterator() and then the add() method (duplicates not added obviously)
     }
 
     //someCollection.toArray() converts a Collection to an Array
@@ -130,11 +130,26 @@ public class CollectionsLearning {
 
 
 
+    public static void testMapEntryUnavailable() {
+        Map<String,String> map = new HashMap<>();
+        map.put("1","hello");
+        map.put("2","goodbye");
+
+        Map<String,String> newMap = new HashMap<>();
+        //This following line does not through an error, just associates 3 to null
+        newMap.put("3", map.get("3"));
+        newMap.put("2", map.get("2"));
+        System.out.println(newMap);
+    }
+
+
+
     public static void main(String[] args) {
         usingAsList();
         convertBetweenCollections();
         bulkOperations();
         immutableLists();
+        testMapEntryUnavailable();
     }
 
 }
