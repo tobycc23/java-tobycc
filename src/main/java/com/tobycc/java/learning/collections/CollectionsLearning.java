@@ -8,6 +8,106 @@ import java.util.stream.Collectors;
  */
 public class CollectionsLearning {
 
+    //Legacy Vector and Enumeration and Collection Classes
+    /** Example 1:1
+     *
+     */
+    class EnumerationTester {
+        public void main(String args[]) {
+            Enumeration days;
+            Vector dayNames = new Vector();
+
+            dayNames.add("Sunday");
+            dayNames.add("Monday");
+            dayNames.add("Tuesday");
+            dayNames.add("Wednesday");
+            dayNames.add("Thursday");
+            dayNames.add("Friday");
+            dayNames.add("Saturday");
+            days = dayNames.elements();
+
+            while (days.hasMoreElements()) {
+                System.out.println(days.nextElement());
+            }
+        }
+    }
+
+
+    /** Example 2:1
+     *
+     */
+    class HashMapDemo {
+        public void main(String args[]) {
+            // Create a hash map
+            Map hm = new HashMap();
+
+            // Put elements to the map
+            hm.put("Zara", new Double(3434.34));
+            hm.put("Mahnaz", new Double(123.22));
+            hm.put("Ayan", new Double(1378.00));
+            hm.put("Daisy", new Double(99.22));
+            hm.put("Qadir", new Double(-19.08));
+
+            // Get a set of the entries
+            Set set = hm.entrySet();
+
+            // Get an iterator
+            Iterator i = set.iterator();
+
+            // Display elements
+            // Use TreeMap to display in name order ascending
+            while(i.hasNext()) {
+                Map.Entry me = (Map.Entry)i.next();
+                System.out.print(me.getKey() + ": ");
+                System.out.println(me.getValue());
+            }
+            System.out.println();
+
+            // Deposit 1000 into Zara's account
+            double balance = ((Double)hm.get("Zara")).doubleValue();
+            hm.put("Zara", new Double(balance + 1000));
+            System.out.println("Zara's new balance: " + hm.get("Zara"));
+
+            ArrayList al = new ArrayList();
+
+            // add elements to the array list
+            al.add("C");
+            al.add("A");
+            al.add("E");
+            al.add("B");
+            al.add("D");
+            al.add("F");
+
+            // Modify objects being iterated
+            ListIterator litr = al.listIterator();
+
+            while(litr.hasNext()) {
+                Object element = litr.next();
+                litr.set(element + "+");
+            }
+            System.out.print("Modified contents of al: ");
+
+            Iterator itr = al.iterator();
+            while(itr.hasNext()) {
+                Object element = itr.next();
+                System.out.print(element + " ");
+            }
+            System.out.println();
+
+            // Now, display the list backwards
+            System.out.print("Modified list backwards: ");
+
+            while(litr.hasPrevious()) {
+                Object element = litr.previous();
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+
+
     //Converting between collections is simple
     public static void convertBetweenCollections() {
         List list = new ArrayList();
