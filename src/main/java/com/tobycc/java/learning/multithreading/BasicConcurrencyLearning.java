@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by toby.christey-clover on 17/04/2018.
  */
-public class BasicConcurrency {
+public class BasicConcurrencyLearning {
 
     /** Example 1:1
      *
