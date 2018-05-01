@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+        >
+
+    <bean id="addressbean" class="com.tobycc.java.learning.spring.basics.Address">
+        <property name="city" value="Bath"></property>
+    </bean>
+    <bean id="addressbean2" class="com.tobycc.java.learning.spring.basics.Address">
+        <constructor-arg name="city" value="Bristol"></constructor-arg>
+    </bean>
+
+    <bean id="employeebean" class="com.tobycc.java.learning.spring.basics.Employee">
+        <constructor-arg ref="addressbean"></constructor-arg>
+    </bean>
+    <bean id="employeebean2" class="com.tobycc.java.learning.spring.basics.Employee">
+        <constructor-arg ref="addressbean2"></constructor-arg>
+    </bean>
+
+    <bean id="company" class="com.tobycc.java.learning.spring.basics.Company" parent="parentcompany">
+        <property name="employees">
+            <list>
+                <ref bean="employeebean"></ref>
+                <ref bean="employeebean2"></ref>
+            </list>
+        </property>
+    </bean>
+    <bean id="parentcompany" class="com.tobycc.java.learning.spring.basics.Company">
+        <constructor-arg name="brand" value="Parent Corporation X"></constructor-arg>
+    </bean>
+
+
+
+    <bean id="location" class="com.tobycc.java.learning.spring.basics.Locat">
+        <property name="zone" value="100000"></property>
+    </bean>
+
+    <!--The autowire="byName" below autowires the fields not assigned below, e.g. company  here gets assigned to-->
+    <!--the id="company" bean, This would throw an error if the bean "company" did not exist-->
+    <bean id="building" class="com.tobycc.java.learning.spring.basics.Building" autowire="byName">
+        <property name="name" value="BuildingA"></property>
+        <property name="buildingLocation" ref="location"></property>
+    </bean>
+
+    <bean id="building2" class="com.tobycc.java.learning.spring.basics.Building">
+        <property name="name" value="BuildingB"></property>
+    </bean>
+
+
+    <!--<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" /> -->
+    <context:annotation-config />
+    <!-- Below needed for the stereotype bean autowiring e.g. of the @Component Management  -->
+    <context:component-scan base-package="com.tobycc.java.learning.spring.basics" />
+</beans>

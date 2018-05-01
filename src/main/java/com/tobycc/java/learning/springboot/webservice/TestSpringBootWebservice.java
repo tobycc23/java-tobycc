@@ -1,4 +1,4 @@
-package com.tobycc.java.learning.webservice;
+package com.tobycc.java.learning.springboot.webservice;
 
 /**
  * Created by toby.christey-clover on 23/04/2018.
@@ -19,9 +19,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebserviceApp {
+public class TestSpringBootWebservice {
 
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+        SpringApplication.run(TestSpringBootWebservice.class, args);
     }
 }

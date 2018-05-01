@@ -1,4 +1,4 @@
-package com.tobycc.java.learning.webservice;
+package com.tobycc.java.learning.springboot.webservice;
 
 /**
  * Created by toby.christey-clover on 23/04/2018.
