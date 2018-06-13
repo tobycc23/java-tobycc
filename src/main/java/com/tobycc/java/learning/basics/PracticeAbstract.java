@@ -13,7 +13,14 @@ package com.tobycc.java.learning.basics;
 public abstract class PracticeAbstract implements PracticeInterface {
     protected int distanceMin = 5;
     protected int moons = 3;
-    
+    protected static int staticMoons;
+    public static String[] dust;
+
+
+    protected static int getStaticMoons() {
+        return staticMoons;
+    }
+
     @Override
     public String planetType(int type) {
         String temp;

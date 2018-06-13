@@ -16,7 +16,13 @@ public class PracticeSuperclass extends PracticeAbstract {
     private long population = 817938413;
     protected int messageN;
     protected String message;
-    
+
+    //This overrides moon above
+    protected int moons = 4;
+    protected static int staticMoons = 4;
+
+    protected static String[] dust = {"dust"};
+
     public PracticeSuperclass() {
         
     }
@@ -40,5 +46,15 @@ public class PracticeSuperclass extends PracticeAbstract {
             return (int) (size/10 + population/1000000000);
         }
         return -1;
+    }
+
+
+
+    public static void main(String[] args) {
+        System.out.println(new PracticeSuperclass().moons);
+        //This calls the superclass method, need to override it
+        System.out.println(PracticeSuperclass.getStaticMoons());
+
+        System.out.println(PracticeSuperclass.dust.toString());
     }
 }
